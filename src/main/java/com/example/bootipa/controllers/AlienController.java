@@ -67,4 +67,19 @@ public class AlienController
         repo.save(alien);
         return alien;
     }
+
+    @DeleteMapping("/alien/{aid}")
+    public String deleteAlien(@PathVariable int aid)
+    {
+        Alien a = repo.getOne(aid);
+        repo.delete(a);
+        return "deleted";
+    }
+
+    @PutMapping(path="/alien")
+    public Alien saveOrUpdateAlien(@RequestBody Alien alien)
+    {
+        repo.save(alien);
+        return alien;
+    }
 }
